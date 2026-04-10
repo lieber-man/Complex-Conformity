@@ -9,9 +9,6 @@ class Flock{
         this.sampleInterval = 500; // 1 second
     }
 run(){
-    this.clearCells();
-    this.assignBoidsToCells(this.boids);
-
 
     for (let boid of this.boids){
         boid.run(this.boids);
@@ -21,7 +18,6 @@ run(){
     localPI = this.calculate_nPI();
     this.updateHistory();
 }
-
 
 updateHistory() {
   let now = millis();
@@ -68,13 +64,6 @@ assignBoidsToCells(boids) {
     row = constrain(row, 0, rows - 1);
 
     cells[col][row].push(b);
-  }
-}
-clearCells() {
-  for (let x = 0; x < cols; x++) {
-    for (let y = 0; y < rows; y++) {
-      cells[x][y].length = 0;
-    }
   }
 }
 calculate_nPI(){
