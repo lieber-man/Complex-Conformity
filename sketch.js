@@ -73,7 +73,7 @@ function draw() {
   push();
   fill(255, 255, 255);
   text("Wahrheitsempfindlichkeit: " + truthSensitivity.value(), 10, 40);
-  text("Echokammer-Stärke": + echoWeight.value(), 10, 90);
+  text("Echokammer-Stärke: " + echoWeight.value(), 10, 90);
   text("Einfluss der Minderheit:" + normWeight.value(), 10, 140);
   text("Anzahl Boids: " + slider.value(), 10, 190);
   text("Anteil Boids in lokaler Instanz von PI: " + (localPI *100).toFixed(1) + "%", 10, height -10 );
