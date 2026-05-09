@@ -14,6 +14,8 @@ let duration = 30000;
 let isRecording = 0;
 let myFont;
 let slider;
+let grid = {};
+let cellSize = 75;
 
 
 function preload(){
@@ -66,6 +68,12 @@ function draw() {
   let now = millis();
   globalPI = flock.calculateGlobal_PI(flock.boids);
   background(59,49,41);
+  grid = {};
+for (let b of boids) {
+  let key = `${floor(b.position.x / cellSize)},${floor(b.position.y / cellSize)}`;
+  if (!grid[key]) grid[key] = [];
+  grid[key].push(b);
+}
   flock.run();
   textAlign(LEFT);
   textSize(16);
