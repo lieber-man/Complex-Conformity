@@ -222,27 +222,22 @@ run(boids){
     
 
  getNeighbors(boids) {
+  let neighbors = [];
+  let col = floor(this.position.x / cellSize);
+  let row = floor(this.position.y / cellSize);
 
-    let neighborDistance = this.range;
-
-    let neighbors = []
-
-        for(let other of boids){
-
-            let d = p5.Vector.dist(this.position, other.position);
-             if (this !== other && d< eliteRange && other.isElite === 1){
-                neighbors.push(other);
-
-             }
-            
-            if (this !== other && d< neighborDistance){
-
-                neighbors.push(other);
-                }
+  for (let dc = -1; dc <= 1; dc++) {
+    for (let dr = -1; dr <= 1; dr++) {
+      let key = `${col + dc},${row + dr}`;
+      if (grid[key]) {
+        for (let other of grid[key]) {
+          if (other !== this) neighbors.push(other);
         }
-        return neighbors;
+      }
     }
-
+  }
+  return neighbors;
+}
 
 
 
